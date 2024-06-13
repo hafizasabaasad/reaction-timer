@@ -27,6 +27,6 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
+### Live Application view
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Live application [view](https://hafizasabaasad.github.io/reaction-timer/)
