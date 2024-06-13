@@ -1,6 +1,7 @@
 <template>
   <h1>Welcome to Single Page Application Demo</h1>
   <h2>Title: Ninja Reaction Timer</h2>
+  
   <description />
   <button @click="start" :disabled="isPlaying">Play</button>
   <block v-if="isPlaying" :delay="delay" @end="endgame" />
