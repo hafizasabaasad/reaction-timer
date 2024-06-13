@@ -1,8 +1,41 @@
 <template>
   <h1>Welcome to my App</h1>
+  <h2>Ninja Reaction Timer</h2>
+  <button @click="start" :disabled="isPlaying">Play</button>
+ <block  v-if="isPlaying" :delay="delay" @end="endgame" />
+ <result v-if="showResults" :score="score" />
 </template>
 
-<script></script>
+<script>
+import block from "./components/block.vue";
+import result from "./components/result.vue";
+export  default{
+  name:'App',
+  components: { block , result },
+  data(){
+    return {
+      isPlaying: false,
+      dalay: null,
+      score: null,
+      showResults: false
+    }
+  },
+  methods:{
+    start(){
+      this.delay = 1000 + Math.random() * 3000
+     this.isPlaying = true
+     this.showResults = false
+    
+    },
+    endgame(reactiontime){
+     this.score = reactiontime
+     this.isPlaying = false
+     this.showResults = true
+    }
+  }
+  
+}
+</script>
 
 <style>
 #app {
@@ -10,7 +43,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #396999;
   margin-top: 60px;
+}
+button{
+  background: #64ad56;
+  color:black;
+  border:none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: 10px;
+}
+button[disabled]{
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>
